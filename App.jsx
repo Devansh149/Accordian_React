@@ -1,5 +1,6 @@
 import data from "./data";
 import { useState } from "react";
+import { ArrowDown, ArrowUp } from "lucide-react";
 const App = () => {
   const [activeId, setactiveId] = useState(null);
   const handleClick = (id) => {
@@ -12,8 +13,11 @@ const App = () => {
         return <div key={id}
           onClick={() => { handleClick(id) }}
           className="bg-amber-50 text-black border w-3xl p-3 rounded">
-          <h2>{heading}</h2>
-          {activeId==id && <p>{description}</p> }
+          <div className="flex justify-between">
+            <h2>{heading}</h2>
+            {activeId == id ? <ArrowUp /> : <ArrowDown />}
+          </div>
+          {activeId == id && <p>{description}</p>}
         </div>
       })}
     </div>
